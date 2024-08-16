@@ -440,6 +440,7 @@ class ExtensionMenuHelper(object):
         parent.append_submenu(label, menu)
         return menu
 
+
 class Dummy:
     """A class for objects with arbitrary attributes (for imitating Gtk Events etc.)"""
     def __init__(self, **kwds):
