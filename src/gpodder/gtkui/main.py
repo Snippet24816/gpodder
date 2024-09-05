@@ -447,26 +447,28 @@ class gPodder(BuilderWidget, dbus.service.Object):
             self._for_each_task_set_status(selected_tasks, download.DownloadTask.QUEUED)
         self.resume_all_infobar.set_revealed(False)
 
-    def find_partial_downloads(self):
+        def find_partial_downloads(self):
         def start_progress_callback(count):
             if count:
-                self.partial_downloads_indicator = ProgressIndicator(
-                        _('Loading incomplete downloads'),
-                        _('Some episodes have not finished downloading in a previous session.'),
-                        False, self.get_dialog_parent())
-                self.partial_downloads_indicator.on_message(N_(
-                    '%(count)d partial file', '%(count)d partial files',
-                    count) % {'count': count})
+#                self.partial_downloads_indicator = ProgressIndicator(
+#                        _('Loading incomplete downloads'),
+#                        _('Some episodes have not finished downloading in a previous session.'),
+#                        False, self.get_dialog_parent())
+#                self.partial_downloads_indicator.on_message(N_(
+#                    '%(count)d partial file', '%(count)d partial files',
+#                    count) % {'count': count})
 
                 util.idle_add(self.wNotebook.set_current_page, 1)
 
         def progress_callback(title, progress):
-            self.partial_downloads_indicator.on_message(title)
-            self.partial_downloads_indicator.on_progress(progress)
-            self.partial_downloads_indicator.on_tick()  # not cancellable
+#            self.partial_downloads_indicator.on_message(title)
+#            self.partial_downloads_indicator.on_progress(progress)
+#            self.partial_downloads_indicator.on_tick()  # not cancellable
+            pass
 
         def final_progress_callback():
-            self.partial_downloads_indicator.on_tick(final=_('Cleaning up...'))
+#            self.partial_downloads_indicator.on_tick(final=_('Cleaning up...'))
+            pass    
 
         def finish_progress_callback(resumable_episodes):
             def offer_resuming():
